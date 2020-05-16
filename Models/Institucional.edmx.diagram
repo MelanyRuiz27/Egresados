@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f409bd911f4d42ac9918899a7ba3ba2c" Name="Diagram1">
+        <EntityTypeShape EntityType="InstitucionalModel.Instituciones" Width="1.5" PointX="3.75" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="InstitucionalModel.NivelesFormación" Width="1.5" PointX="3.75" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="InstitucionalModel.Programas" Width="1.5" PointX="6" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="InstitucionalModel.Sedes" Width="1.5" PointX="6" PointY="18.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InstitucionalModel.Actividades" Width="1.5" PointX="8.25" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InstitucionalModel.ActividadesEgresados" Width="1.5" PointX="10.5" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="InstitucionalModel.Convocatorias" Width="1.5" PointX="3.375" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="InstitucionalModel.Egresados" Width="1.5" PointX="8.25" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="InstitucionalModel.Idiomas" Width="1.5" PointX="8.25" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="InstitucionalModel.OfertasEgresados" Width="1.5" PointX="10.5" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="InstitucionalModel.OfertasLaborales" Width="1.5" PointX="8.25" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="InstitucionalModel.Soportes" Width="1.5" PointX="3" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="InstitucionalModel.Direcciones" Width="1.5" PointX="11.25" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="InstitucionalModel.DivisionesPoliticas" Width="1.5" PointX="9" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="InstitucionalModel.Estados" Width="1.5" PointX="0.75" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="InstitucionalModel.Niveles" Width="1.5" PointX="6.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="InstitucionalModel.Personas" Width="1.5" PointX="6" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="InstitucionalModel.TiposDocumentos" Width="1.5" PointX="3.75" PointY="6.25" IsExpanded="true" />
+        <AssociationConnector Association="InstitucionalModel.FK_Programa_Institucion" ManuallyRouted="false" />
+        <AssociationConnector Association="InstitucionalModel.FK_Sedes_Instituciones" ManuallyRouted="false" />
+        <AssociationConnector Association="InstitucionalModel.FK_Programa_NivelesFormación" ManuallyRouted="false" />
+        <AssociationConnector Association="InstitucionalModel.FK_Egresados_Programas" ManuallyRouted="false" />
+        <AssociationConnector Association="InstitucionalModel.FK_ActividadesEgresados_Actividades" ManuallyRouted="false" />
+        <AssociationConnector Association="InstitucionalModel.FK_ActividadesEgresados_Egresados" ManuallyRouted="false" />
+        <AssociationConnector Association="InstitucionalModel.FK_Egresados_Personas" ManuallyRouted="false" />
+        <AssociationConnector Association="InstitucionalModel.FK_OfertasEgresados_Egresados" ManuallyRouted="false" />
+        <AssociationConnector Association="InstitucionalModel.FK_Idiomas_Personas" ManuallyRouted="false" />
+        <AssociationConnector Association="InstitucionalModel.FK_OfertasEgresados_OfertasLaborales" ManuallyRouted="false" />
+        <AssociationConnector Association="InstitucionalModel.FK_Soportes_Estados" ManuallyRouted="false" />
+        <AssociationConnector Association="InstitucionalModel.FK_Soportes_Personas" ManuallyRouted="false" />
+        <AssociationConnector Association="InstitucionalModel.FK_Direcciones_DivisionesPoliticas" ManuallyRouted="false" />
+        <AssociationConnector Association="InstitucionalModel.FK_Direcciones_Personas" ManuallyRouted="false" />
+        <AssociationConnector Association="InstitucionalModel.FK_Divipolitica_Niveles" ManuallyRouted="false" />
+        <AssociationConnector Association="InstitucionalModel.FK_Personas_Estados" ManuallyRouted="false" />
+        <AssociationConnector Association="InstitucionalModel.FK_Personas_TiposDocumentos" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

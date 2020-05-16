@@ -1,0 +1,1215 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="InstitucionalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Instituciones">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nit" Type="varchar" MaxLength="50" />
+          <Property Name="Nombre" Type="varchar(max)" />
+          <Property Name="Snies" Type="varchar" MaxLength="50" />
+          <Property Name="Resolucion" Type="varchar" MaxLength="50" />
+          <Property Name="FechaRegistro" Type="date" />
+          <Property Name="FechaRenovacion" Type="date" />
+        </EntityType>
+        <EntityType Name="NivelesFormación">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nivel" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Programas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdInstitucion" Type="int" />
+          <Property Name="IdNivelFormacion" Type="int" />
+          <Property Name="Codigo" Type="varchar" MaxLength="50" />
+          <Property Name="Nombre" Type="varchar(max)" />
+          <Property Name="Snies" Type="varchar(max)" />
+          <Property Name="Semestres" Type="int" />
+          <Property Name="Creditos" Type="int" />
+        </EntityType>
+        <EntityType Name="Sedes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdInstitucion" Type="int" />
+          <Property Name="Sede" Type="varchar(max)" />
+          <Property Name="Direccion" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Actividades">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fecha" Type="date" />
+          <Property Name="Solicitante" Type="varchar(max)" />
+          <Property Name="Dirigido" Type="varchar(max)" />
+          <Property Name="Titulo" Type="varchar(max)" />
+          <Property Name="Mensaje" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="ActividadesEgresados">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdEgresado" Type="int" />
+          <Property Name="IdActividad" Type="int" />
+        </EntityType>
+        <EntityType Name="Convocatorias">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Titulo" Type="varchar(max)" />
+          <Property Name="Mensaje" Type="varchar(max)" />
+          <Property Name="DirigidoA" Type="varchar(max)" />
+          <Property Name="Fecha" Type="date" />
+        </EntityType>
+        <EntityType Name="Egresados">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdPersona" Type="int" />
+          <Property Name="IdPrograma" Type="int" />
+          <Property Name="FechaEgreso" Type="date" />
+          <Property Name="TarjetaProfesional" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Idiomas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdPersona" Type="int" />
+          <Property Name="Habla" Type="int" />
+          <Property Name="Lee" Type="int" />
+          <Property Name="Escribe" Type="int" />
+        </EntityType>
+        <EntityType Name="OfertasEgresados">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdOfertaLaboral" Type="int" />
+          <Property Name="IdEgresado" Type="int" />
+        </EntityType>
+        <EntityType Name="OfertasLaborales">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Titulo" Type="varchar(max)" />
+          <Property Name="Mensaje" Type="varchar(max)" />
+          <Property Name="FechaInicio" Type="date" />
+          <Property Name="FechaFin" Type="date" />
+          <Property Name="Empresa" Type="varchar(max)" />
+          <Property Name="Cargo" Type="varchar(max)" />
+          <Property Name="Actividades" Type="varchar(max)" />
+          <Property Name="Perfil" Type="varchar(max)" />
+          <Property Name="Salario" Type="money" />
+        </EntityType>
+        <EntityType Name="Soportes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdPersona" Type="int" />
+          <Property Name="IdEstadoSoportes" Type="int" />
+          <Property Name="Soporte" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Direcciones">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdPersona" Type="int" />
+          <Property Name="IdDivipo" Type="int" />
+          <Property Name="Direccion" Type="varchar(max)" />
+          <Property Name="Telefono1" Type="varchar" MaxLength="20" />
+          <Property Name="Telefono2" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="DivisionesPoliticas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdNivel" Type="int" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="400" Nullable="false" />
+          <Property Name="IdPadre" Type="int" Nullable="false" />
+          <Property Name="CodigoAlterno" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Estados">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdGrupo" Type="int" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Niveles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Personas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdTipoDocumento" Type="int" />
+          <Property Name="Documento" Type="varchar" MaxLength="50" />
+          <Property Name="Nombres" Type="varchar(max)" />
+          <Property Name="Apellidos" Type="varchar(max)" />
+          <Property Name="Correo" Type="varchar(max)" />
+          <Property Name="CorreoAlterno" Type="varchar(max)" />
+          <Property Name="IdEstadoSexo" Type="int" />
+        </EntityType>
+        <EntityType Name="TiposDocumentos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TipoDocumentos" Type="varchar(max)" />
+        </EntityType>
+        <Association Name="FK_ActividadesEgresados_Actividades">
+          <End Role="Actividades" Type="Self.Actividades" Multiplicity="0..1" />
+          <End Role="ActividadesEgresados" Type="Self.ActividadesEgresados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Actividades">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ActividadesEgresados">
+              <PropertyRef Name="IdActividad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ActividadesEgresados_Egresados">
+          <End Role="Egresados" Type="Self.Egresados" Multiplicity="0..1" />
+          <End Role="ActividadesEgresados" Type="Self.ActividadesEgresados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Egresados">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ActividadesEgresados">
+              <PropertyRef Name="IdEgresado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Direcciones_DivisionesPoliticas">
+          <End Role="DivisionesPoliticas" Type="Self.DivisionesPoliticas" Multiplicity="0..1" />
+          <End Role="Direcciones" Type="Self.Direcciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DivisionesPoliticas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Direcciones">
+              <PropertyRef Name="IdDivipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Direcciones_Personas">
+          <End Role="Personas" Type="Self.Personas" Multiplicity="0..1" />
+          <End Role="Direcciones" Type="Self.Direcciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Direcciones">
+              <PropertyRef Name="IdPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Divipolitica_Niveles">
+          <End Role="Niveles" Type="Self.Niveles" Multiplicity="1" />
+          <End Role="DivisionesPoliticas" Type="Self.DivisionesPoliticas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Niveles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DivisionesPoliticas">
+              <PropertyRef Name="IdNivel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Egresados_Personas">
+          <End Role="Personas" Type="Self.Personas" Multiplicity="0..1" />
+          <End Role="Egresados" Type="Self.Egresados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Egresados">
+              <PropertyRef Name="IdPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Egresados_Programas">
+          <End Role="Programas" Type="Self.Programas" Multiplicity="0..1" />
+          <End Role="Egresados" Type="Self.Egresados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Programas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Egresados">
+              <PropertyRef Name="IdPrograma" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Idiomas_Personas">
+          <End Role="Personas" Type="Self.Personas" Multiplicity="0..1" />
+          <End Role="Idiomas" Type="Self.Idiomas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Idiomas">
+              <PropertyRef Name="IdPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OfertasEgresados_Egresados">
+          <End Role="Egresados" Type="Self.Egresados" Multiplicity="0..1" />
+          <End Role="OfertasEgresados" Type="Self.OfertasEgresados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Egresados">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OfertasEgresados">
+              <PropertyRef Name="IdEgresado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OfertasEgresados_OfertasLaborales">
+          <End Role="OfertasLaborales" Type="Self.OfertasLaborales" Multiplicity="0..1" />
+          <End Role="OfertasEgresados" Type="Self.OfertasEgresados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OfertasLaborales">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OfertasEgresados">
+              <PropertyRef Name="IdOfertaLaboral" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Personas_Estados">
+          <End Role="Estados" Type="Self.Estados" Multiplicity="0..1" />
+          <End Role="Personas" Type="Self.Personas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estados">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Personas">
+              <PropertyRef Name="IdEstadoSexo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Personas_TiposDocumentos">
+          <End Role="TiposDocumentos" Type="Self.TiposDocumentos" Multiplicity="0..1" />
+          <End Role="Personas" Type="Self.Personas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TiposDocumentos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Personas">
+              <PropertyRef Name="IdTipoDocumento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Programa_Institucion">
+          <End Role="Instituciones" Type="Self.Instituciones" Multiplicity="0..1" />
+          <End Role="Programas" Type="Self.Programas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Instituciones">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Programas">
+              <PropertyRef Name="IdInstitucion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Programa_NivelesFormación">
+          <End Role="NivelesFormación" Type="Self.NivelesFormación" Multiplicity="0..1" />
+          <End Role="Programas" Type="Self.Programas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NivelesFormación">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Programas">
+              <PropertyRef Name="IdNivelFormacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sedes_Instituciones">
+          <End Role="Instituciones" Type="Self.Instituciones" Multiplicity="0..1" />
+          <End Role="Sedes" Type="Self.Sedes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Instituciones">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sedes">
+              <PropertyRef Name="IdInstitucion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Soportes_Estados">
+          <End Role="Estados" Type="Self.Estados" Multiplicity="0..1" />
+          <End Role="Soportes" Type="Self.Soportes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estados">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Soportes">
+              <PropertyRef Name="IdEstadoSoportes" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Soportes_Personas">
+          <End Role="Personas" Type="Self.Personas" Multiplicity="0..1" />
+          <End Role="Soportes" Type="Self.Soportes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Soportes">
+              <PropertyRef Name="IdPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="InstitucionalModelStoreContainer">
+          <EntitySet Name="Instituciones" EntityType="Self.Instituciones" Schema="Academico" store:Type="Tables" />
+          <EntitySet Name="NivelesFormación" EntityType="Self.NivelesFormación" Schema="Academico" store:Type="Tables" />
+          <EntitySet Name="Programas" EntityType="Self.Programas" Schema="Academico" store:Type="Tables" />
+          <EntitySet Name="Sedes" EntityType="Self.Sedes" Schema="Administrativo" store:Type="Tables" />
+          <EntitySet Name="Actividades" EntityType="Self.Actividades" Schema="Bienestar" store:Type="Tables" />
+          <EntitySet Name="ActividadesEgresados" EntityType="Self.ActividadesEgresados" Schema="Bienestar" store:Type="Tables" />
+          <EntitySet Name="Convocatorias" EntityType="Self.Convocatorias" Schema="Bienestar" store:Type="Tables" />
+          <EntitySet Name="Egresados" EntityType="Self.Egresados" Schema="Bienestar" store:Type="Tables" />
+          <EntitySet Name="Idiomas" EntityType="Self.Idiomas" Schema="Bienestar" store:Type="Tables" />
+          <EntitySet Name="OfertasEgresados" EntityType="Self.OfertasEgresados" Schema="Bienestar" store:Type="Tables" />
+          <EntitySet Name="OfertasLaborales" EntityType="Self.OfertasLaborales" Schema="Bienestar" store:Type="Tables" />
+          <EntitySet Name="Soportes" EntityType="Self.Soportes" Schema="Bienestar" store:Type="Tables" />
+          <EntitySet Name="Direcciones" EntityType="Self.Direcciones" Schema="Esencial" store:Type="Tables" />
+          <EntitySet Name="DivisionesPoliticas" EntityType="Self.DivisionesPoliticas" Schema="Esencial" store:Type="Tables" />
+          <EntitySet Name="Estados" EntityType="Self.Estados" Schema="Esencial" store:Type="Tables" />
+          <EntitySet Name="Niveles" EntityType="Self.Niveles" Schema="Esencial" store:Type="Tables" />
+          <EntitySet Name="Personas" EntityType="Self.Personas" Schema="Esencial" store:Type="Tables" />
+          <EntitySet Name="TiposDocumentos" EntityType="Self.TiposDocumentos" Schema="Esencial" store:Type="Tables" />
+          <AssociationSet Name="FK_ActividadesEgresados_Actividades" Association="Self.FK_ActividadesEgresados_Actividades">
+            <End Role="Actividades" EntitySet="Actividades" />
+            <End Role="ActividadesEgresados" EntitySet="ActividadesEgresados" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ActividadesEgresados_Egresados" Association="Self.FK_ActividadesEgresados_Egresados">
+            <End Role="Egresados" EntitySet="Egresados" />
+            <End Role="ActividadesEgresados" EntitySet="ActividadesEgresados" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Direcciones_DivisionesPoliticas" Association="Self.FK_Direcciones_DivisionesPoliticas">
+            <End Role="DivisionesPoliticas" EntitySet="DivisionesPoliticas" />
+            <End Role="Direcciones" EntitySet="Direcciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Direcciones_Personas" Association="Self.FK_Direcciones_Personas">
+            <End Role="Personas" EntitySet="Personas" />
+            <End Role="Direcciones" EntitySet="Direcciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Divipolitica_Niveles" Association="Self.FK_Divipolitica_Niveles">
+            <End Role="Niveles" EntitySet="Niveles" />
+            <End Role="DivisionesPoliticas" EntitySet="DivisionesPoliticas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Egresados_Personas" Association="Self.FK_Egresados_Personas">
+            <End Role="Personas" EntitySet="Personas" />
+            <End Role="Egresados" EntitySet="Egresados" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Egresados_Programas" Association="Self.FK_Egresados_Programas">
+            <End Role="Programas" EntitySet="Programas" />
+            <End Role="Egresados" EntitySet="Egresados" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Idiomas_Personas" Association="Self.FK_Idiomas_Personas">
+            <End Role="Personas" EntitySet="Personas" />
+            <End Role="Idiomas" EntitySet="Idiomas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OfertasEgresados_Egresados" Association="Self.FK_OfertasEgresados_Egresados">
+            <End Role="Egresados" EntitySet="Egresados" />
+            <End Role="OfertasEgresados" EntitySet="OfertasEgresados" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OfertasEgresados_OfertasLaborales" Association="Self.FK_OfertasEgresados_OfertasLaborales">
+            <End Role="OfertasLaborales" EntitySet="OfertasLaborales" />
+            <End Role="OfertasEgresados" EntitySet="OfertasEgresados" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Personas_Estados" Association="Self.FK_Personas_Estados">
+            <End Role="Estados" EntitySet="Estados" />
+            <End Role="Personas" EntitySet="Personas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Personas_TiposDocumentos" Association="Self.FK_Personas_TiposDocumentos">
+            <End Role="TiposDocumentos" EntitySet="TiposDocumentos" />
+            <End Role="Personas" EntitySet="Personas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Programa_Institucion" Association="Self.FK_Programa_Institucion">
+            <End Role="Instituciones" EntitySet="Instituciones" />
+            <End Role="Programas" EntitySet="Programas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Programa_NivelesFormación" Association="Self.FK_Programa_NivelesFormación">
+            <End Role="NivelesFormación" EntitySet="NivelesFormación" />
+            <End Role="Programas" EntitySet="Programas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sedes_Instituciones" Association="Self.FK_Sedes_Instituciones">
+            <End Role="Instituciones" EntitySet="Instituciones" />
+            <End Role="Sedes" EntitySet="Sedes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Soportes_Estados" Association="Self.FK_Soportes_Estados">
+            <End Role="Estados" EntitySet="Estados" />
+            <End Role="Soportes" EntitySet="Soportes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Soportes_Personas" Association="Self.FK_Soportes_Personas">
+            <End Role="Personas" EntitySet="Personas" />
+            <End Role="Soportes" EntitySet="Soportes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="InstitucionalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Instituciones">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Snies" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Resolucion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FechaRegistro" Type="DateTime" Precision="0" />
+          <Property Name="FechaRenovacion" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Programas" Relationship="Self.FK_Programa_Institucion" FromRole="Instituciones" ToRole="Programas" />
+          <NavigationProperty Name="Sedes" Relationship="Self.FK_Sedes_Instituciones" FromRole="Instituciones" ToRole="Sedes" />
+        </EntityType>
+        <EntityType Name="NivelesFormación">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nivel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Programas" Relationship="Self.FK_Programa_NivelesFormación" FromRole="NivelesFormación" ToRole="Programas" />
+        </EntityType>
+        <EntityType Name="Programas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdInstitucion" Type="Int32" />
+          <Property Name="IdNivelFormacion" Type="Int32" />
+          <Property Name="Codigo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Snies" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Semestres" Type="Int32" />
+          <Property Name="Creditos" Type="Int32" />
+          <NavigationProperty Name="Instituciones" Relationship="Self.FK_Programa_Institucion" FromRole="Programas" ToRole="Instituciones" />
+          <NavigationProperty Name="NivelesFormación" Relationship="Self.FK_Programa_NivelesFormación" FromRole="Programas" ToRole="NivelesFormación" />
+          <NavigationProperty Name="Egresados" Relationship="Self.FK_Egresados_Programas" FromRole="Programas" ToRole="Egresados" />
+        </EntityType>
+        <EntityType Name="Sedes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdInstitucion" Type="Int32" />
+          <Property Name="Sede" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Direccion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Instituciones" Relationship="Self.FK_Sedes_Instituciones" FromRole="Sedes" ToRole="Instituciones" />
+        </EntityType>
+        <EntityType Name="Actividades">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fecha" Type="DateTime" Precision="0" />
+          <Property Name="Solicitante" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Dirigido" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Titulo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Mensaje" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ActividadesEgresados" Relationship="Self.FK_ActividadesEgresados_Actividades" FromRole="Actividades" ToRole="ActividadesEgresados" />
+        </EntityType>
+        <EntityType Name="ActividadesEgresados">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdEgresado" Type="Int32" />
+          <Property Name="IdActividad" Type="Int32" />
+          <NavigationProperty Name="Actividades" Relationship="Self.FK_ActividadesEgresados_Actividades" FromRole="ActividadesEgresados" ToRole="Actividades" />
+          <NavigationProperty Name="Egresados" Relationship="Self.FK_ActividadesEgresados_Egresados" FromRole="ActividadesEgresados" ToRole="Egresados" />
+        </EntityType>
+        <EntityType Name="Convocatorias">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Titulo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Mensaje" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DirigidoA" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="Egresados">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdPersona" Type="Int32" />
+          <Property Name="IdPrograma" Type="Int32" />
+          <Property Name="FechaEgreso" Type="DateTime" Precision="0" />
+          <Property Name="TarjetaProfesional" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Programas" Relationship="Self.FK_Egresados_Programas" FromRole="Egresados" ToRole="Programas" />
+          <NavigationProperty Name="ActividadesEgresados" Relationship="Self.FK_ActividadesEgresados_Egresados" FromRole="Egresados" ToRole="ActividadesEgresados" />
+          <NavigationProperty Name="Personas" Relationship="Self.FK_Egresados_Personas" FromRole="Egresados" ToRole="Personas" />
+          <NavigationProperty Name="OfertasEgresados" Relationship="Self.FK_OfertasEgresados_Egresados" FromRole="Egresados" ToRole="OfertasEgresados" />
+        </EntityType>
+        <EntityType Name="Idiomas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdPersona" Type="Int32" />
+          <Property Name="Habla" Type="Int32" />
+          <Property Name="Lee" Type="Int32" />
+          <Property Name="Escribe" Type="Int32" />
+          <NavigationProperty Name="Personas" Relationship="Self.FK_Idiomas_Personas" FromRole="Idiomas" ToRole="Personas" />
+        </EntityType>
+        <EntityType Name="OfertasEgresados">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdOfertaLaboral" Type="Int32" />
+          <Property Name="IdEgresado" Type="Int32" />
+          <NavigationProperty Name="Egresados" Relationship="Self.FK_OfertasEgresados_Egresados" FromRole="OfertasEgresados" ToRole="Egresados" />
+          <NavigationProperty Name="OfertasLaborales" Relationship="Self.FK_OfertasEgresados_OfertasLaborales" FromRole="OfertasEgresados" ToRole="OfertasLaborales" />
+        </EntityType>
+        <EntityType Name="OfertasLaborales">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Titulo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Mensaje" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FechaInicio" Type="DateTime" Precision="0" />
+          <Property Name="FechaFin" Type="DateTime" Precision="0" />
+          <Property Name="Empresa" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Cargo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Actividades" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Perfil" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Salario" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="OfertasEgresados" Relationship="Self.FK_OfertasEgresados_OfertasLaborales" FromRole="OfertasLaborales" ToRole="OfertasEgresados" />
+        </EntityType>
+        <EntityType Name="Soportes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdPersona" Type="Int32" />
+          <Property Name="IdEstadoSoportes" Type="Int32" />
+          <Property Name="Soporte" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Estados" Relationship="Self.FK_Soportes_Estados" FromRole="Soportes" ToRole="Estados" />
+          <NavigationProperty Name="Personas" Relationship="Self.FK_Soportes_Personas" FromRole="Soportes" ToRole="Personas" />
+        </EntityType>
+        <EntityType Name="Direcciones">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdPersona" Type="Int32" />
+          <Property Name="IdDivipo" Type="Int32" />
+          <Property Name="Direccion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono2" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="DivisionesPoliticas" Relationship="Self.FK_Direcciones_DivisionesPoliticas" FromRole="Direcciones" ToRole="DivisionesPoliticas" />
+          <NavigationProperty Name="Personas" Relationship="Self.FK_Direcciones_Personas" FromRole="Direcciones" ToRole="Personas" />
+        </EntityType>
+        <EntityType Name="DivisionesPoliticas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdNivel" Type="Int32" Nullable="false" />
+          <Property Name="Codigo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="400" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdPadre" Type="Int32" Nullable="false" />
+          <Property Name="CodigoAlterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Direcciones" Relationship="Self.FK_Direcciones_DivisionesPoliticas" FromRole="DivisionesPoliticas" ToRole="Direcciones" />
+          <NavigationProperty Name="Niveles" Relationship="Self.FK_Divipolitica_Niveles" FromRole="DivisionesPoliticas" ToRole="Niveles" />
+        </EntityType>
+        <EntityType Name="Estados">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdGrupo" Type="Int32" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Soportes" Relationship="Self.FK_Soportes_Estados" FromRole="Estados" ToRole="Soportes" />
+          <NavigationProperty Name="Personas" Relationship="Self.FK_Personas_Estados" FromRole="Estados" ToRole="Personas" />
+        </EntityType>
+        <EntityType Name="Niveles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="DivisionesPoliticas" Relationship="Self.FK_Divipolitica_Niveles" FromRole="Niveles" ToRole="DivisionesPoliticas" />
+        </EntityType>
+        <EntityType Name="Personas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdTipoDocumento" Type="Int32" />
+          <Property Name="Documento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Nombres" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Apellidos" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Correo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CorreoAlterno" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IdEstadoSexo" Type="Int32" />
+          <NavigationProperty Name="Egresados" Relationship="Self.FK_Egresados_Personas" FromRole="Personas" ToRole="Egresados" />
+          <NavigationProperty Name="Idiomas" Relationship="Self.FK_Idiomas_Personas" FromRole="Personas" ToRole="Idiomas" />
+          <NavigationProperty Name="Soportes" Relationship="Self.FK_Soportes_Personas" FromRole="Personas" ToRole="Soportes" />
+          <NavigationProperty Name="Direcciones" Relationship="Self.FK_Direcciones_Personas" FromRole="Personas" ToRole="Direcciones" />
+          <NavigationProperty Name="Estados" Relationship="Self.FK_Personas_Estados" FromRole="Personas" ToRole="Estados" />
+          <NavigationProperty Name="TiposDocumentos" Relationship="Self.FK_Personas_TiposDocumentos" FromRole="Personas" ToRole="TiposDocumentos" />
+        </EntityType>
+        <EntityType Name="TiposDocumentos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TipoDocumentos" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Personas" Relationship="Self.FK_Personas_TiposDocumentos" FromRole="TiposDocumentos" ToRole="Personas" />
+        </EntityType>
+        <Association Name="FK_Programa_Institucion">
+          <End Role="Instituciones" Type="Self.Instituciones" Multiplicity="0..1" />
+          <End Role="Programas" Type="Self.Programas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Instituciones">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Programas">
+              <PropertyRef Name="IdInstitucion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sedes_Instituciones">
+          <End Role="Instituciones" Type="Self.Instituciones" Multiplicity="0..1" />
+          <End Role="Sedes" Type="Self.Sedes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Instituciones">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sedes">
+              <PropertyRef Name="IdInstitucion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Programa_NivelesFormación">
+          <End Role="NivelesFormación" Type="Self.NivelesFormación" Multiplicity="0..1" />
+          <End Role="Programas" Type="Self.Programas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NivelesFormación">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Programas">
+              <PropertyRef Name="IdNivelFormacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Egresados_Programas">
+          <End Role="Programas" Type="Self.Programas" Multiplicity="0..1" />
+          <End Role="Egresados" Type="Self.Egresados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Programas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Egresados">
+              <PropertyRef Name="IdPrograma" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ActividadesEgresados_Actividades">
+          <End Role="Actividades" Type="Self.Actividades" Multiplicity="0..1" />
+          <End Role="ActividadesEgresados" Type="Self.ActividadesEgresados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Actividades">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ActividadesEgresados">
+              <PropertyRef Name="IdActividad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ActividadesEgresados_Egresados">
+          <End Role="Egresados" Type="Self.Egresados" Multiplicity="0..1" />
+          <End Role="ActividadesEgresados" Type="Self.ActividadesEgresados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Egresados">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ActividadesEgresados">
+              <PropertyRef Name="IdEgresado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Egresados_Personas">
+          <End Role="Personas" Type="Self.Personas" Multiplicity="0..1" />
+          <End Role="Egresados" Type="Self.Egresados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Egresados">
+              <PropertyRef Name="IdPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OfertasEgresados_Egresados">
+          <End Role="Egresados" Type="Self.Egresados" Multiplicity="0..1" />
+          <End Role="OfertasEgresados" Type="Self.OfertasEgresados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Egresados">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OfertasEgresados">
+              <PropertyRef Name="IdEgresado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Idiomas_Personas">
+          <End Role="Personas" Type="Self.Personas" Multiplicity="0..1" />
+          <End Role="Idiomas" Type="Self.Idiomas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Idiomas">
+              <PropertyRef Name="IdPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OfertasEgresados_OfertasLaborales">
+          <End Role="OfertasLaborales" Type="Self.OfertasLaborales" Multiplicity="0..1" />
+          <End Role="OfertasEgresados" Type="Self.OfertasEgresados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OfertasLaborales">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OfertasEgresados">
+              <PropertyRef Name="IdOfertaLaboral" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Soportes_Estados">
+          <End Role="Estados" Type="Self.Estados" Multiplicity="0..1" />
+          <End Role="Soportes" Type="Self.Soportes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estados">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Soportes">
+              <PropertyRef Name="IdEstadoSoportes" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Soportes_Personas">
+          <End Role="Personas" Type="Self.Personas" Multiplicity="0..1" />
+          <End Role="Soportes" Type="Self.Soportes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Soportes">
+              <PropertyRef Name="IdPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Direcciones_DivisionesPoliticas">
+          <End Role="DivisionesPoliticas" Type="Self.DivisionesPoliticas" Multiplicity="0..1" />
+          <End Role="Direcciones" Type="Self.Direcciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DivisionesPoliticas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Direcciones">
+              <PropertyRef Name="IdDivipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Direcciones_Personas">
+          <End Role="Personas" Type="Self.Personas" Multiplicity="0..1" />
+          <End Role="Direcciones" Type="Self.Direcciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Direcciones">
+              <PropertyRef Name="IdPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Divipolitica_Niveles">
+          <End Role="Niveles" Type="Self.Niveles" Multiplicity="1" />
+          <End Role="DivisionesPoliticas" Type="Self.DivisionesPoliticas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Niveles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DivisionesPoliticas">
+              <PropertyRef Name="IdNivel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Personas_Estados">
+          <End Role="Estados" Type="Self.Estados" Multiplicity="0..1" />
+          <End Role="Personas" Type="Self.Personas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estados">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Personas">
+              <PropertyRef Name="IdEstadoSexo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Personas_TiposDocumentos">
+          <End Role="TiposDocumentos" Type="Self.TiposDocumentos" Multiplicity="0..1" />
+          <End Role="Personas" Type="Self.Personas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TiposDocumentos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Personas">
+              <PropertyRef Name="IdTipoDocumento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="InstitucionalEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Instituciones" EntityType="Self.Instituciones" />
+          <EntitySet Name="NivelesFormación" EntityType="Self.NivelesFormación" />
+          <EntitySet Name="Programas" EntityType="Self.Programas" />
+          <EntitySet Name="Sedes" EntityType="Self.Sedes" />
+          <EntitySet Name="Actividades" EntityType="Self.Actividades" />
+          <EntitySet Name="ActividadesEgresados" EntityType="Self.ActividadesEgresados" />
+          <EntitySet Name="Convocatorias" EntityType="Self.Convocatorias" />
+          <EntitySet Name="Egresados" EntityType="Self.Egresados" />
+          <EntitySet Name="Idiomas" EntityType="Self.Idiomas" />
+          <EntitySet Name="OfertasEgresados" EntityType="Self.OfertasEgresados" />
+          <EntitySet Name="OfertasLaborales" EntityType="Self.OfertasLaborales" />
+          <EntitySet Name="Soportes" EntityType="Self.Soportes" />
+          <EntitySet Name="Direcciones" EntityType="Self.Direcciones" />
+          <EntitySet Name="DivisionesPoliticas" EntityType="Self.DivisionesPoliticas" />
+          <EntitySet Name="Estados" EntityType="Self.Estados" />
+          <EntitySet Name="Niveles" EntityType="Self.Niveles" />
+          <EntitySet Name="Personas" EntityType="Self.Personas" />
+          <EntitySet Name="TiposDocumentos" EntityType="Self.TiposDocumentos" />
+          <AssociationSet Name="FK_Programa_Institucion" Association="Self.FK_Programa_Institucion">
+            <End Role="Instituciones" EntitySet="Instituciones" />
+            <End Role="Programas" EntitySet="Programas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sedes_Instituciones" Association="Self.FK_Sedes_Instituciones">
+            <End Role="Instituciones" EntitySet="Instituciones" />
+            <End Role="Sedes" EntitySet="Sedes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Programa_NivelesFormación" Association="Self.FK_Programa_NivelesFormación">
+            <End Role="NivelesFormación" EntitySet="NivelesFormación" />
+            <End Role="Programas" EntitySet="Programas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Egresados_Programas" Association="Self.FK_Egresados_Programas">
+            <End Role="Programas" EntitySet="Programas" />
+            <End Role="Egresados" EntitySet="Egresados" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ActividadesEgresados_Actividades" Association="Self.FK_ActividadesEgresados_Actividades">
+            <End Role="Actividades" EntitySet="Actividades" />
+            <End Role="ActividadesEgresados" EntitySet="ActividadesEgresados" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ActividadesEgresados_Egresados" Association="Self.FK_ActividadesEgresados_Egresados">
+            <End Role="Egresados" EntitySet="Egresados" />
+            <End Role="ActividadesEgresados" EntitySet="ActividadesEgresados" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Egresados_Personas" Association="Self.FK_Egresados_Personas">
+            <End Role="Personas" EntitySet="Personas" />
+            <End Role="Egresados" EntitySet="Egresados" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OfertasEgresados_Egresados" Association="Self.FK_OfertasEgresados_Egresados">
+            <End Role="Egresados" EntitySet="Egresados" />
+            <End Role="OfertasEgresados" EntitySet="OfertasEgresados" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Idiomas_Personas" Association="Self.FK_Idiomas_Personas">
+            <End Role="Personas" EntitySet="Personas" />
+            <End Role="Idiomas" EntitySet="Idiomas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OfertasEgresados_OfertasLaborales" Association="Self.FK_OfertasEgresados_OfertasLaborales">
+            <End Role="OfertasLaborales" EntitySet="OfertasLaborales" />
+            <End Role="OfertasEgresados" EntitySet="OfertasEgresados" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Soportes_Estados" Association="Self.FK_Soportes_Estados">
+            <End Role="Estados" EntitySet="Estados" />
+            <End Role="Soportes" EntitySet="Soportes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Soportes_Personas" Association="Self.FK_Soportes_Personas">
+            <End Role="Personas" EntitySet="Personas" />
+            <End Role="Soportes" EntitySet="Soportes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Direcciones_DivisionesPoliticas" Association="Self.FK_Direcciones_DivisionesPoliticas">
+            <End Role="DivisionesPoliticas" EntitySet="DivisionesPoliticas" />
+            <End Role="Direcciones" EntitySet="Direcciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Direcciones_Personas" Association="Self.FK_Direcciones_Personas">
+            <End Role="Personas" EntitySet="Personas" />
+            <End Role="Direcciones" EntitySet="Direcciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Divipolitica_Niveles" Association="Self.FK_Divipolitica_Niveles">
+            <End Role="Niveles" EntitySet="Niveles" />
+            <End Role="DivisionesPoliticas" EntitySet="DivisionesPoliticas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Personas_Estados" Association="Self.FK_Personas_Estados">
+            <End Role="Estados" EntitySet="Estados" />
+            <End Role="Personas" EntitySet="Personas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Personas_TiposDocumentos" Association="Self.FK_Personas_TiposDocumentos">
+            <End Role="TiposDocumentos" EntitySet="TiposDocumentos" />
+            <End Role="Personas" EntitySet="Personas" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="InstitucionalModelStoreContainer" CdmEntityContainer="InstitucionalEntities">
+          <EntitySetMapping Name="Instituciones">
+            <EntityTypeMapping TypeName="InstitucionalModel.Instituciones">
+              <MappingFragment StoreEntitySet="Instituciones">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nit" ColumnName="Nit" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Snies" ColumnName="Snies" />
+                <ScalarProperty Name="Resolucion" ColumnName="Resolucion" />
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+                <ScalarProperty Name="FechaRenovacion" ColumnName="FechaRenovacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NivelesFormación">
+            <EntityTypeMapping TypeName="InstitucionalModel.NivelesFormación">
+              <MappingFragment StoreEntitySet="NivelesFormación">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nivel" ColumnName="Nivel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Programas">
+            <EntityTypeMapping TypeName="InstitucionalModel.Programas">
+              <MappingFragment StoreEntitySet="Programas">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdInstitucion" ColumnName="IdInstitucion" />
+                <ScalarProperty Name="IdNivelFormacion" ColumnName="IdNivelFormacion" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Snies" ColumnName="Snies" />
+                <ScalarProperty Name="Semestres" ColumnName="Semestres" />
+                <ScalarProperty Name="Creditos" ColumnName="Creditos" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sedes">
+            <EntityTypeMapping TypeName="InstitucionalModel.Sedes">
+              <MappingFragment StoreEntitySet="Sedes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdInstitucion" ColumnName="IdInstitucion" />
+                <ScalarProperty Name="Sede" ColumnName="Sede" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Actividades">
+            <EntityTypeMapping TypeName="InstitucionalModel.Actividades">
+              <MappingFragment StoreEntitySet="Actividades">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Solicitante" ColumnName="Solicitante" />
+                <ScalarProperty Name="Dirigido" ColumnName="Dirigido" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="Mensaje" ColumnName="Mensaje" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ActividadesEgresados">
+            <EntityTypeMapping TypeName="InstitucionalModel.ActividadesEgresados">
+              <MappingFragment StoreEntitySet="ActividadesEgresados">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdEgresado" ColumnName="IdEgresado" />
+                <ScalarProperty Name="IdActividad" ColumnName="IdActividad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Convocatorias">
+            <EntityTypeMapping TypeName="InstitucionalModel.Convocatorias">
+              <MappingFragment StoreEntitySet="Convocatorias">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="Mensaje" ColumnName="Mensaje" />
+                <ScalarProperty Name="DirigidoA" ColumnName="DirigidoA" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Egresados">
+            <EntityTypeMapping TypeName="InstitucionalModel.Egresados">
+              <MappingFragment StoreEntitySet="Egresados">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+                <ScalarProperty Name="IdPrograma" ColumnName="IdPrograma" />
+                <ScalarProperty Name="FechaEgreso" ColumnName="FechaEgreso" />
+                <ScalarProperty Name="TarjetaProfesional" ColumnName="TarjetaProfesional" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Idiomas">
+            <EntityTypeMapping TypeName="InstitucionalModel.Idiomas">
+              <MappingFragment StoreEntitySet="Idiomas">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+                <ScalarProperty Name="Habla" ColumnName="Habla" />
+                <ScalarProperty Name="Lee" ColumnName="Lee" />
+                <ScalarProperty Name="Escribe" ColumnName="Escribe" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OfertasEgresados">
+            <EntityTypeMapping TypeName="InstitucionalModel.OfertasEgresados">
+              <MappingFragment StoreEntitySet="OfertasEgresados">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdOfertaLaboral" ColumnName="IdOfertaLaboral" />
+                <ScalarProperty Name="IdEgresado" ColumnName="IdEgresado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OfertasLaborales">
+            <EntityTypeMapping TypeName="InstitucionalModel.OfertasLaborales">
+              <MappingFragment StoreEntitySet="OfertasLaborales">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="Mensaje" ColumnName="Mensaje" />
+                <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+                <ScalarProperty Name="FechaFin" ColumnName="FechaFin" />
+                <ScalarProperty Name="Empresa" ColumnName="Empresa" />
+                <ScalarProperty Name="Cargo" ColumnName="Cargo" />
+                <ScalarProperty Name="Actividades" ColumnName="Actividades" />
+                <ScalarProperty Name="Perfil" ColumnName="Perfil" />
+                <ScalarProperty Name="Salario" ColumnName="Salario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Soportes">
+            <EntityTypeMapping TypeName="InstitucionalModel.Soportes">
+              <MappingFragment StoreEntitySet="Soportes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+                <ScalarProperty Name="IdEstadoSoportes" ColumnName="IdEstadoSoportes" />
+                <ScalarProperty Name="Soporte" ColumnName="Soporte" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Direcciones">
+            <EntityTypeMapping TypeName="InstitucionalModel.Direcciones">
+              <MappingFragment StoreEntitySet="Direcciones">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+                <ScalarProperty Name="IdDivipo" ColumnName="IdDivipo" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Telefono1" ColumnName="Telefono1" />
+                <ScalarProperty Name="Telefono2" ColumnName="Telefono2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DivisionesPoliticas">
+            <EntityTypeMapping TypeName="InstitucionalModel.DivisionesPoliticas">
+              <MappingFragment StoreEntitySet="DivisionesPoliticas">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdNivel" ColumnName="IdNivel" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdPadre" ColumnName="IdPadre" />
+                <ScalarProperty Name="CodigoAlterno" ColumnName="CodigoAlterno" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Estados">
+            <EntityTypeMapping TypeName="InstitucionalModel.Estados">
+              <MappingFragment StoreEntitySet="Estados">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdGrupo" ColumnName="IdGrupo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Niveles">
+            <EntityTypeMapping TypeName="InstitucionalModel.Niveles">
+              <MappingFragment StoreEntitySet="Niveles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Personas">
+            <EntityTypeMapping TypeName="InstitucionalModel.Personas">
+              <MappingFragment StoreEntitySet="Personas">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdTipoDocumento" ColumnName="IdTipoDocumento" />
+                <ScalarProperty Name="Documento" ColumnName="Documento" />
+                <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="CorreoAlterno" ColumnName="CorreoAlterno" />
+                <ScalarProperty Name="IdEstadoSexo" ColumnName="IdEstadoSexo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TiposDocumentos">
+            <EntityTypeMapping TypeName="InstitucionalModel.TiposDocumentos">
+              <MappingFragment StoreEntitySet="TiposDocumentos">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TipoDocumentos" ColumnName="TipoDocumentos" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
