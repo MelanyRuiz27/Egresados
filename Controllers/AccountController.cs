@@ -13,6 +13,7 @@ using EgresadosU.Models;
 namespace EgresadosU.Controllers
 {
     [Authorize]
+    //hola
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;
