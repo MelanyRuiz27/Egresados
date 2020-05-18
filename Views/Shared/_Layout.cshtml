@@ -42,15 +42,28 @@
                     <li>
                         <a class="nav-link" href="/Home/About">
                             <i class="nc-icon nc-circle-09"></i>
-                            <p>Acerca de nosotros</p>
+                            <p>Nosotros</p>
                         </a>
                     </li>
                     <li>
-                        <a class="nav-link" href="./table.html">
-                            <i class="nc-icon nc-notes"></i>
-                            <p>Table List</p>
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" style="transform: translate(0px, 0px);">
+                            <i class="nc-icon nc-notes "></i>
+                            Iniciar Sesión <b class="caret"></b>
+                            <ul class="dropdown-menu" >
+                                <li><a href="/Account/Login">Soy Estudiante</a></li>
+                                <li><a href="/Account/LoginAdmin">Soy Administrador</a></li>
+                            </ul>
                         </a>
-                    </li>
+                    @*<li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color:midnightblue">
+                            Iniciar Sesión <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/Account/Login">Soy Estudiante</a></li>
+                            <li><a href="/Account/LoginAdmin">Soy Administrador</a></li>
+                        </ul>
+                    </li>*@
+                     </li>
                     <li>
                         <a class="nav-link" href="./typography.html">
                             <i class="nc-icon nc-paper-2"></i>
@@ -75,7 +88,7 @@
                             <p>Notifications</p>
                         </a>
                     </li>
-                    
+
                 </ul>
             </div>
         </div>
@@ -98,10 +111,15 @@
                             </li>  
                         </ul>
                         <ul class="navbar-nav ml-auto">
-                            <li class="nav-item">
-                                <a class="nav-link" href="/Account/Login">
-                                    <span class="no-icon">Iniciar Sesión</span>
+
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color:midnightblue">
+                                    Iniciar Sesión <b class="caret"></b>
                                 </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="btn btn-default" href="/Account/Login">Soy Estudiante</a></li>
+                                    <li><a class="btn btn-default" href="/Account/LoginAdmin">Soy Administrador</a></li>
+                                </ul>
                             </li>
 
                             <li class="nav-item">
@@ -110,7 +128,7 @@
                                 </a>
                             </li>
 
-                            
+
                         </ul>
                     </div>
                 </div>
