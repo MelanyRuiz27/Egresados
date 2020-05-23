@@ -174,8 +174,15 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\DireccionesController.cs" />
+    <Compile Include="Controllers\DivisionesPoliticasController.cs" />
+    <Compile Include="Controllers\EgresadosController.cs" />
+    <Compile Include="Controllers\EstadosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PersonasController.cs" />
+    <Compile Include="Controllers\ProgramasController.cs" />
+    <Compile Include="Controllers\TiposDocumentosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -489,6 +496,41 @@
     <Content Include="Views\Home\Contactenos.cshtml" />
     <Content Include="Views\Home\Directorios.cshtml" />
     <Content Include="Views\Home\RedesSociales.cshtml" />
+    <Content Include="Views\TiposDocumentos\Create.cshtml" />
+    <Content Include="Views\TiposDocumentos\Delete.cshtml" />
+    <Content Include="Views\TiposDocumentos\Details.cshtml" />
+    <Content Include="Views\TiposDocumentos\Edit.cshtml" />
+    <Content Include="Views\TiposDocumentos\Index.cshtml" />
+    <Content Include="Views\Egresados\Create.cshtml" />
+    <Content Include="Views\Egresados\Delete.cshtml" />
+    <Content Include="Views\Egresados\Details.cshtml" />
+    <Content Include="Views\Egresados\Edit.cshtml" />
+    <Content Include="Views\Egresados\Index.cshtml" />
+    <Content Include="Views\Programas\Create.cshtml" />
+    <Content Include="Views\Programas\Delete.cshtml" />
+    <Content Include="Views\Programas\Details.cshtml" />
+    <Content Include="Views\Programas\Edit.cshtml" />
+    <Content Include="Views\Programas\Index.cshtml" />
+    <Content Include="Views\Direcciones\Create.cshtml" />
+    <Content Include="Views\Direcciones\Delete.cshtml" />
+    <Content Include="Views\Direcciones\Details.cshtml" />
+    <Content Include="Views\Direcciones\Edit.cshtml" />
+    <Content Include="Views\Direcciones\Index.cshtml" />
+    <Content Include="Views\DivisionesPoliticas\Create.cshtml" />
+    <Content Include="Views\DivisionesPoliticas\Delete.cshtml" />
+    <Content Include="Views\DivisionesPoliticas\Details.cshtml" />
+    <Content Include="Views\DivisionesPoliticas\Edit.cshtml" />
+    <Content Include="Views\DivisionesPoliticas\Index.cshtml" />
+    <Content Include="Views\Estados\Create.cshtml" />
+    <Content Include="Views\Estados\Delete.cshtml" />
+    <Content Include="Views\Estados\Details.cshtml" />
+    <Content Include="Views\Estados\Edit.cshtml" />
+    <Content Include="Views\Estados\Index.cshtml" />
+    <Content Include="Views\Personas\Create.cshtml" />
+    <Content Include="Views\Personas\Delete.cshtml" />
+    <Content Include="Views\Personas\Details.cshtml" />
+    <Content Include="Views\Personas\Edit.cshtml" />
+    <Content Include="Views\Personas\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
