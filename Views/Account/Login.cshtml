@@ -1,19 +1,27 @@
 ﻿@using EgresadosU.Models
+@{
+    Layout = "~/Views/Shared/_PlantillaLogin.cshtml";
+
+ }
+
 @model LoginViewModel
     @{
     ViewBag.Title = "Iniciar Sesión";
 }
     <div class="container">
         <div class="row justify-content-md-center" >
-            <div class="col-md-auto " >
+            <div class="col-md-6 ">
+
+                
                 <section id="loginForm">
                     @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                     {
                         @Html.AntiForgeryToken()
-                        <h4>Utilice una cuenta local para iniciar sesión.</h4>
+
                         <hr />
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                         <div class="form-group text-center">
+                            <h4>CUENTA LOCAL</h4>
                             @Html.LabelFor(m => m.Email, new { @class = "col-md-6 control-label " })
                             <div class="col-md-auto ">
                                 @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
@@ -27,25 +35,28 @@
                                 @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-dark" })
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group text-center">
                             <div class="col-md-offset-2 col-md-auto">
                                 <div class="checkbox">
                                     @Html.CheckBoxFor(m => m.RememberMe)
                                     @Html.LabelFor(m => m.RememberMe)
+                                    <br />
+                                    <input type="submit" value="Iniciar sesión" class="btn btn-primary btn-fill" />
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group col-md-auto">
-                            <div class="col-md-offset-2 col-md-10">
-                                <input type="submit" value="Iniciar sesión" class="btn btn-primary btn-fill" />
+                        <div class="form-group text-center">
+                            <div class="col-md-offset-2">
+                                <a class="text-primary" href="/Account/Register"> Registrarse como usuario nuevo </a>
+
+                                <br />
+                                <a class="text-primary" href="/Account/ForgotPassword"> ¿Ha olvidado su contraseña? </a>
                             </div>
                         </div>
 
-                        <a class="text-primary" href="/Account/Register"> Registrarse como usuario nuevo </a>
                         @*@Html.ActionLink("Registrarse como usuario nuevo", "Register")*@
                         // Habilite esta opción una vez tenga la confirmación de la cuenta habilitada para la funcionalidad de restablecimiento de contraseña
-                        <br />
-                        <a class="text-primary" href="/Account/ForgotPassword"> ¿Ha olvidado su contraseña? </a>
+
 
                         @*@Html.ActionLink("¿Ha olvidado su contraseña?", "ForgotPassword")*@
 

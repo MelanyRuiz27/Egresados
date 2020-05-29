@@ -19,94 +19,102 @@
 </head>
 
 <body>
-    <div class="wrapper">
-        <div class="sidebar" data-image="../assets/img/sidebar-42.jpg" data-color="blue">
-            <!--
-                Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
+    
+        <div class="wrapper">
+            <div class="sidebar" data-image="../assets/img/sidebar-42.jpg" data-color="blue">
+                <!--
+                    Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
 
-                Tip 2: you can also add an image using data-image tag
-            -->
-            <div class="sidebar-wrapper">
-                <div class="logo ">
-                    <a class="logo-link"  itemprop="url">
-                        <img class="site-img-logo" src="https://utap.edu.co/sitio/wp-content/uploads/2019/09/cropped-logo-letra-blanca.png" width="240" height="80" alt="UTAP">
-                    </a>
-                </div>
-                <ul class="nav">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/Home/Index">
-                            <i class="nc-icon nc-bullet-list-67"></i>
-                            <p>Inicio</p>
+                    Tip 2: you can also add an image using data-image tag
+                -->
+                <div class="sidebar-wrapper">
+                    <div class="logo ">
+                        <a class="logo-link" itemprop="url">
+                            <img class="site-img-logo" src="https://utap.edu.co/sitio/wp-content/uploads/2019/09/cropped-logo-letra-blanca.png" width="240" height="80" alt="UTAP">
                         </a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="/Home/About">
-                            <i class="nc-icon nc-circle-09"></i>
-                            <p>Nosotros</p>
-                        </a>
-                    </li>
-                    <li>
-                        
+                    </div>
+                    <ul class="nav">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/Home/Index">
+                                <i class="nc-icon nc-bullet-list-67"></i>
+                                <p>Inicio</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="/Home/About">
+                                <i class="nc-icon nc-circle-09"></i>
+                                <p>Nosotros</p>
+                            </a>
+                        </li>
+                        <li>
+
                             <a class="nav-link" href="/Home/Directorios">
-                            <i class="nc-icon nc-mobile"></i>
-                            <p>Directorio</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="/Home/RedesSociales">
-                            <i class="nc-icon nc-chat-round"></i>
-                            <p>Redes Sociales</p>
-                        </a>
-                    </li>
-                </ul>
+                                <i class="nc-icon nc-mobile"></i>
+                                <p>Directorio</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="/Home/RedesSociales">
+                                <i class="nc-icon nc-chat-round"></i>
+                                <p>Redes Sociales</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-        <div class="main-panel">
-            <!-- Navbar -->
-            <nav class="navbar navbar-expand-lg " color-on-scroll="500">
-                <div class=" container-fluid  ">
-                    <a class="navbar-brand" href="#pablo"> Egresados </a>
-                    <button href="" class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-bar burger-lines"></span>
-                        <span class="navbar-toggler-bar burger-lines"></span>
-                        <span class="navbar-toggler-bar burger-lines"></span>
-                    </button>
-                    <div class="collapse navbar-collapse justify-content-end" id="navigation">
-                        <ul class="nav navbar-nav mr-auto">
-                            <li class="nav-item">
-                                <a href="#" class="nav-link" data-toggle="dropdown">
-                                    <span class="d-lg-none">Dashboard</span>
-                                </a>
-                            </li>  
-                        </ul>
-                        <ul class="navbar-nav ml-auto">
+            <div class="main-panel">
+               
+                    <!-- Navbar -->
+                    <nav class="navbar navbar-expand-lg " color-on-scroll="500">
+                        <div class=" container-fluid  ">
+                            <a class="navbar-brand" href="#pablo"> Egresados </a>
+                            <button href="" class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-bar burger-lines"></span>
+                                <span class="navbar-toggler-bar burger-lines"></span>
+                                <span class="navbar-toggler-bar burger-lines"></span>
+                            </button>
+                            <div class="collapse navbar-collapse justify-content-end" id="navigation">
+                                <ul class="nav navbar-nav mr-auto">
+                                    <li class="nav-item">
+                                        <a href="#" class="nav-link" data-toggle="dropdown">
+                                            <span class="d-lg-none">Dashboard</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <ul class="navbar-nav ml-auto">
+                                    @if (Request.IsAuthenticated)
+                                    {
+                                        <li class="nav-item">
+                                            <a class="nav-link">
+                                                <span class="no-icon">  @Html.Partial("_LoginPartial") </span>
+                                            </a>
+                                        </li>
+                                    }
+                                    else
+                                    {
 
-                            <li class="btn-default">
-                                <a href="/Account/Login" class="btn btn-primary" style="color:midnightblue">
-                                    Iniciar Sesión <b class="caret"></b>
-                                </a>
-                            </li>
+                                        <li class="btn-default">
+                                            <a href="/Account/Login" class="btn btn-primary" style="color:midnightblue">
+                                                Iniciar Sesión <b class="caret"></b>
+                                            </a>
+                                        </li>
 
-                            <li class="nav-item">
-                                <a class="nav-link">
-                                    <span class="no-icon"> @Html.Partial("_LoginPartial")  </span>
-                                </a>
-                            </li>
+                                    }
 
 
-                        </ul>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                    <!-- End Navbar -->
+                    <div class="content">
+                        <div class="container-fluid">
+                            @RenderBody()
+                        </div>
                     </div>
                 </div>
-            </nav>
-            <!-- End Navbar -->
-            <div class="content">
-                <div class="container-fluid">
-                    @RenderBody()
-                </div>
-            </div>
         </div>
-    </div>
-   
+    
     <!--   Core JS Files   -->
     <script src="../assets/js/core/jquery.3.2.1.min.js" type="text/javascript"></script>
     <script src="../assets/js/core/popper.min.js" type="text/javascript"></script>
