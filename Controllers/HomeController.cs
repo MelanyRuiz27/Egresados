@@ -29,5 +29,11 @@ namespace EgresadosU.Controllers
 
             return View();
         }
+
+        public ActionResult Mapa()
+        {
+
+            return View();
+        }
     }
 }
