@@ -43,5 +43,7 @@ namespace EgresadosU.Models
         public virtual DbSet<Niveles> Niveles { get; set; }
         public virtual DbSet<Personas> Personas { get; set; }
         public virtual DbSet<TiposDocumentos> TiposDocumentos { get; set; }
+        public virtual DbSet<AspNetRoles> AspNetRoles { get; set; }
+        public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
     }
 }

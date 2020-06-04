@@ -34,39 +34,82 @@
                         </a>
                     </div>
                     <ul class="nav">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="/Home/Index">
-                                <i class="nc-icon nc-bullet-list-67"></i>
-                                <p>Inicio</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="nav-link" href="/Home/About">
-                                <i class="nc-icon nc-circle-09"></i>
-                                <p>Nosotros</p>
-                            </a>
-                        </li>
-                        <li>
 
-                            <a class="nav-link" href="/Home/Directorios">
-                                <i class="nc-icon nc-mobile"></i>
-                                <p>Directorio</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="nav-link" href="/Home/RedesSociales">
-                                <i class="nc-icon nc-chat-round"></i>
-                                <p>Redes Sociales</p>
-                            </a>
-                        </li>
+                        @if (Request.IsAuthenticated)
+                        {
+                            if (User.IsInRole("Admin"))
+                            {
 
-                        <li>
-                            <a class="nav-link" href="/Home/Mapa">
-                                <i class="nc-icon nc-map-big"></i>
-                                <p>Mapa</p>
-                            </a>
-                        </li>
 
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="/Account/Register">
+                                        <i class="nc-icon nc-bullet-list-67"></i>
+                                        <p>Registrar</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="/RolesAdmin/Index">
+                                        <i class="nc-icon nc-bullet-list-67"></i>
+                                        <p>Roles</p>
+                                    </a>
+                                </li>
+
+
+
+
+                            }
+
+                            else if (User.IsInRole("Usuario"))
+                            {
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="/Convocatorias/Index">
+                                        <i class="nc-icon nc-bullet-list-67"></i>
+                                        <p>Convocatorias</p>
+                                    </a>
+                                </li>
+
+                            }
+
+                        }
+                        else
+                        {
+
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="/Home/Index">
+                                        <i class="nc-icon nc-bullet-list-67"></i>
+                                        <p>Inicio</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="nav-link" href="/Home/About">
+                                        <i class="nc-icon nc-circle-09"></i>
+                                        <p>Nosotros</p>
+                                    </a>
+                                </li>
+                                <li>
+
+                                    <a class="nav-link" href="/Home/Directorios">
+                                        <i class="nc-icon nc-mobile"></i>
+                                        <p>Directorio</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="nav-link" href="/Home/RedesSociales">
+                                        <i class="nc-icon nc-chat-round"></i>
+                                        <p>Redes Sociales</p>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="nav-link" href="/Home/Mapa">
+                                        <i class="nc-icon nc-map-big"></i>
+                                        <p>Mapa</p>
+                                    </a>
+                                </li>
+                            }
+
+                        
                     </ul>
                 </div>
             </div>
@@ -90,6 +133,7 @@
                                     </li>
                                 </ul>
                                 <ul class="navbar-nav ml-auto">
+
                                     @if (Request.IsAuthenticated)
                                     {
                                         <li class="nav-item">
@@ -110,7 +154,7 @@
                                     }
 
 
-                                </ul>
+                                    </ul>
                             </div>
                         </div>
                     </nav>

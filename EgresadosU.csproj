@@ -174,14 +174,21 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ActividadesController.cs" />
+    <Compile Include="Controllers\AspNetUsersController.cs" />
+    <Compile Include="Controllers\ConvocatoriasController.cs" />
     <Compile Include="Controllers\DireccionesController.cs" />
     <Compile Include="Controllers\DivisionesPoliticasController.cs" />
     <Compile Include="Controllers\EgresadosController.cs" />
     <Compile Include="Controllers\EstadosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InstitucionesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\OfertasEgresadosController.cs" />
     <Compile Include="Controllers\PersonasController.cs" />
     <Compile Include="Controllers\ProgramasController.cs" />
+    <Compile Include="Controllers\RolesAdminController.cs" />
+    <Compile Include="Controllers\SedesController.cs" />
     <Compile Include="Controllers\TiposDocumentosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -191,6 +198,12 @@
       <DependentUpon>Institucional.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ActividadesEgresados.cs">
+      <DependentUpon>Institucional.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetRoles.cs">
+      <DependentUpon>Institucional.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUsers.cs">
       <DependentUpon>Institucional.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Convocatorias.cs">
@@ -533,6 +546,41 @@
     <Content Include="Views\Personas\Index.cshtml" />
     <Content Include="Views\Shared\_PlantillaLogin.cshtml" />
     <Content Include="Views\Home\Mapa.cshtml" />
+    <Content Include="Views\Actividades\Create.cshtml" />
+    <Content Include="Views\Actividades\Delete.cshtml" />
+    <Content Include="Views\Actividades\Details.cshtml" />
+    <Content Include="Views\Actividades\Edit.cshtml" />
+    <Content Include="Views\Actividades\Index.cshtml" />
+    <Content Include="Views\OfertasEgresados\Create.cshtml" />
+    <Content Include="Views\OfertasEgresados\Delete.cshtml" />
+    <Content Include="Views\OfertasEgresados\Details.cshtml" />
+    <Content Include="Views\OfertasEgresados\Edit.cshtml" />
+    <Content Include="Views\OfertasEgresados\Index.cshtml" />
+    <Content Include="Views\Sedes\Create.cshtml" />
+    <Content Include="Views\Sedes\Delete.cshtml" />
+    <Content Include="Views\Sedes\Details.cshtml" />
+    <Content Include="Views\Sedes\Edit.cshtml" />
+    <Content Include="Views\Sedes\Index.cshtml" />
+    <Content Include="Views\Convocatorias\Create.cshtml" />
+    <Content Include="Views\Convocatorias\Delete.cshtml" />
+    <Content Include="Views\Convocatorias\Details.cshtml" />
+    <Content Include="Views\Convocatorias\Edit.cshtml" />
+    <Content Include="Views\Convocatorias\Index.cshtml" />
+    <Content Include="Views\Instituciones\Create.cshtml" />
+    <Content Include="Views\Instituciones\Delete.cshtml" />
+    <Content Include="Views\Instituciones\Details.cshtml" />
+    <Content Include="Views\Instituciones\Edit.cshtml" />
+    <Content Include="Views\Instituciones\Index.cshtml" />
+    <Content Include="Views\AspNetUsers\Create.cshtml" />
+    <Content Include="Views\AspNetUsers\Delete.cshtml" />
+    <Content Include="Views\AspNetUsers\Details.cshtml" />
+    <Content Include="Views\AspNetUsers\Edit.cshtml" />
+    <Content Include="Views\AspNetUsers\Index.cshtml" />
+    <Content Include="Views\RolesAdmin\Create.cshtml" />
+    <Content Include="Views\RolesAdmin\Delete.cshtml" />
+    <Content Include="Views\RolesAdmin\Details.cshtml" />
+    <Content Include="Views\RolesAdmin\Edit.cshtml" />
+    <Content Include="Views\RolesAdmin\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

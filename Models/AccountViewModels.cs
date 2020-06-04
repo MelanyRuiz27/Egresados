@@ -64,6 +64,26 @@ namespace EgresadosU.Models
 
     public class RegisterViewModel
     {
+        [Required(ErrorMessage = "Debe ingresar un nombre")]
+        [Display(Name = "Nombres ")]
+        public string Nombres { get; set; }
+
+        [Required(ErrorMessage = "Debe ingresar apellidos ")]
+        [Display(Name = "Apellidos ")]
+        public string Apellidos { get; set; }
+
+        [Required]
+        [Display(Name = "Tipo de Documento ")]
+        public int IdTipoDocumento { get; set; }
+
+        [Required(ErrorMessage = "Debe ingresar el número de documento")]
+        [Display(Name = "Número de Documento ")]
+        public string Documento { get; set; }
+
+        [Required]
+        [Display(Name = "Sexo ")]
+        public int IdEstadoSexo { get; set; }
+
         [Required]
         [EmailAddress]
         [Display(Name = "Correo electrónico")]

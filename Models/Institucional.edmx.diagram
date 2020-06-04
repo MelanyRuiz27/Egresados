@@ -40,6 +40,9 @@
         <AssociationConnector Association="InstitucionalModel.FK_Divipolitica_Niveles" ManuallyRouted="false" />
         <AssociationConnector Association="InstitucionalModel.FK_Personas_Estados" ManuallyRouted="false" />
         <AssociationConnector Association="InstitucionalModel.FK_Personas_TiposDocumentos" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="InstitucionalModel.AspNetRoles" Width="1.5" PointX="11.375" PointY="2.125" />
+        <EntityTypeShape EntityType="InstitucionalModel.AspNetUsers" Width="1.5" PointX="13.625" PointY="1" />
+        <AssociationConnector Association="InstitucionalModel.AspNetUserRoles" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
