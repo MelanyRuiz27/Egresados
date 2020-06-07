@@ -185,6 +185,7 @@
     <Compile Include="Controllers\InstitucionesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OfertasEgresadosController.cs" />
+    <Compile Include="Controllers\OfertasLaboralesController.cs" />
     <Compile Include="Controllers\PersonasController.cs" />
     <Compile Include="Controllers\ProgramasController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
@@ -581,6 +582,11 @@
     <Content Include="Views\RolesAdmin\Details.cshtml" />
     <Content Include="Views\RolesAdmin\Edit.cshtml" />
     <Content Include="Views\RolesAdmin\Index.cshtml" />
+    <Content Include="Views\OfertasLaborales\Create.cshtml" />
+    <Content Include="Views\OfertasLaborales\Delete.cshtml" />
+    <Content Include="Views\OfertasLaborales\Details.cshtml" />
+    <Content Include="Views\OfertasLaborales\Edit.cshtml" />
+    <Content Include="Views\OfertasLaborales\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
