@@ -1,15 +1,15 @@
 ﻿@using EgresadosU.Models
 @model RegisterViewModel
 @{
-    ViewBag.Title = "Registro";
+    ViewBag.Title = "Registro Egresado";
 }
 
-<h2>@ViewBag.Title.</h2>
+<h2>@ViewBag.Title</h2>
 
 @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
-    <h4>Registro Egresado</h4>
+    
     <hr />
 
 
@@ -31,13 +31,13 @@
             </div>
         </div>
 
-        @*<div class="form-group row">
+        <div class="form-group row">
             @Html.LabelFor(m => m.IdTipoDocumento, new { @class = "col-md-2 control-label" })
             <div class="col-md-6">
                 @Html.DropDownListFor(m => m.IdTipoDocumento, new SelectList(ViewBag.ListDocumentTypes, "Id", "TipoDocumentos"),
                 new { @class = "form-control" })
             </div>
-        </div>*@
+        </div>
 
         <div class="form-group row">
             @Html.LabelFor(m => m.Documento, new { @class = "col-md-2 control-label" })
@@ -47,13 +47,13 @@
             </div>
         </div>
 
-        @*<div class="form-group row">
+        <div class="form-group row">
             @Html.LabelFor(m => m.IdEstadoSexo, new { @class = "col-md-2 control-label" })
             <div class="col-md-6">
                 @Html.DropDownListFor(m => m.IdEstadoSexo, new SelectList(ViewBag.ListStates, "Id", "Descripcion"),
                 new { @class = "form-control" })
             </div>
-        </div>*@
+        </div>
         <div class="form-group">
             @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
@@ -74,7 +74,7 @@
         </div>
         <div class="form-group col-md-auto">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Registrarse" class="btn btn-primary btn-fill" />
+                <input type="submit" value="Registrar" class="btn btn-primary btn-fill" />
             </div>
         </div>
 

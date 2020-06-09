@@ -139,6 +139,11 @@ namespace EgresadosU.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            var _context = new EgresadosU.Models.InstitucionalEntities();
+
+            ViewBag.ListDocumentTypes = _context.TiposDocumentos.ToList();
+            ViewBag.ListStates = _context.Estados.ToList();
+
             return View();
         }
 
@@ -149,6 +154,12 @@ namespace EgresadosU.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
+
+            var _context = new EgresadosU.Models.InstitucionalEntities();
+
+            ViewBag.ListDocumentTypes = _context.TiposDocumentos.ToList();
+            ViewBag.ListStates = _context.Estados.ToList();
+
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
