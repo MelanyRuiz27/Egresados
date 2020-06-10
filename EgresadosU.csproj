@@ -269,6 +269,7 @@
     <Compile Include="Models\Soportes.cs">
       <DependentUpon>Institucional.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\SubirArchivoModelo.cs" />
     <Compile Include="Models\TiposDocumentos.cs">
       <DependentUpon>Institucional.tt</DependentUpon>
     </Compile>
@@ -603,9 +604,11 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Home\Convenios.cshtml" />
+    <Content Include="Views\Home\SubirArchivo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Temp\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

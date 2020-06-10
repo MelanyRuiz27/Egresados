@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "SubirArchivo";
+}
+
+    <div class="wrapper">
+        <div class="sidebar-wrapper">
+            <div class="container">
+                <div class="cm-md-12">
+                    <div class="row" style="color:midnightblue">
+                        <h2>Subir Hoja De Vida</h2>
+                    </div>
+                    <br />
+                    <form method="post" enctype="multipart/form-data">
+                        <div class="row">
+                            <input type="file" name="file" />
+                        </div>
+                        <br />
+                        <div class="row">
+                            <button class="alert-primary" style="color:white" type="submit">Subir Archivo</button>
+                        </div>
+                    </form>
+                    <div class="row">
+                        <h2 class="text-danger">@ViewBag.Error</h2>
+                        <h2 class="text-success">@ViewBag.Correcto</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+

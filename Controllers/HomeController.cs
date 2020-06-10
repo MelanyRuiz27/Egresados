@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EgresadosU.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -38,6 +39,26 @@ namespace EgresadosU.Controllers
         public ActionResult Convenios()
         {
 
+            return View();
+        }
+        //Get SubirArhivo
+        public ActionResult SubirArchivo()
+        {
+            return View();
+        }
+        //Post SubirArchivo
+        [HttpPost]
+        public ActionResult SubirArchivo(HttpPostedFileBase file)
+        {
+            SubirArchivoModelo modelo = new SubirArchivoModelo();
+            if (file != null)
+            {
+                String ruta = Server.MapPath("~/Temp/");
+                ruta += file.FileName;
+                modelo.SubirArchivo(ruta, file);
+                ViewBag.Error = modelo.error;
+                ViewBag.Correcto = modelo.Confirmacion;
+            }
             return View();
         }
     }
