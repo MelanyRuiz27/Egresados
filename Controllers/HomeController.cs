@@ -35,5 +35,10 @@ namespace EgresadosU.Controllers
 
             return View();
         }
+        public ActionResult Convenios()
+        {
+
+            return View();
+        }
     }
 }
