@@ -46,6 +46,14 @@ namespace EgresadosU.Controllers
         {
             return View();
         }
+
+        public FileResult DescargarHV()
+        {
+            var ruta = Server.MapPath("~/HV/Hoja_De_Vida.docx");
+            return File(ruta, "application/doc", "Hoja_De_Vida.doc");
+            //return View();
+        }
+
         //Post SubirArchivo
         [HttpPost]
         public ActionResult SubirArchivo(HttpPostedFileBase file)
